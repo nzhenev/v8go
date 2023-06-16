@@ -10,7 +10,6 @@ package v8go
 // #include "v8go.h"
 // #include <stdlib.h>
 import "C"
-
 import (
 	"strings"
 	"unsafe"

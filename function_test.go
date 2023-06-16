@@ -132,7 +132,7 @@ func TestFunctionSourceMapUrl(t *testing.T) {
 
 	fn, _ := addValue.AsFunction()
 
-	resultVal := fn.SourceMapURL()
+	resultVal := fn.SourceMapUrl()
 	if resultVal.String() != "main.js.map" {
 		t.Errorf("expected main.js.map, got %v", resultVal.String())
 	}
@@ -143,7 +143,7 @@ func TestFunctionSourceMapUrl(t *testing.T) {
 	fatalIf(t, err)
 
 	subFn, _ := subValue.AsFunction()
-	resultVal = subFn.SourceMapURL()
+	resultVal = subFn.SourceMapUrl()
 	if !resultVal.IsUndefined() {
 		t.Errorf("expected undefined, got: %v", resultVal.DetailString())
 	}

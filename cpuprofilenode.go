@@ -6,10 +6,10 @@ package v8go
 
 type CPUProfileNode struct {
 	// The id of the current node, unique within the tree.
-	nodeID int
+	nodeId int
 
 	// The id of the script where the function originates.
-	scriptID int
+	scriptId int
 
 	// The resource name for script from where the function originates.
 	scriptResourceName string
@@ -37,13 +37,13 @@ type CPUProfileNode struct {
 }
 
 // Returns node id.
-func (c *CPUProfileNode) GetNodeID() int {
-	return c.nodeID
+func (c *CPUProfileNode) GetNodeId() int {
+	return c.nodeId
 }
 
 // Returns id for script from where the function originates.
-func (c *CPUProfileNode) GetScriptID() int {
-	return c.scriptID
+func (c *CPUProfileNode) GetScriptId() int {
+	return c.scriptId
 }
 
 // Returns function name (empty string for anonymous functions.)

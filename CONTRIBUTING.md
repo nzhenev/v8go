@@ -14,7 +14,7 @@ How to get your contributions merged smoothly and quickly.
 
 * Unless your PR is trivial, you should expect there will be reviewer comments that you'll need to address before merging. We expect you to be reasonably responsive to those comments, otherwise the PR will be closed after 2-3 weeks of inactivity.
 
-* Maintain **clean commit history** and use **meaningful commit messages**. PRs with messy commit history are difficult to review and won't be merged. Use `rebase -i upstream/main` to curate your commit history and/or to bring in latest changes from master (but avoid rebasing in the middle of a code review).
+* Maintain **clean commit history** and use **meaningful commit messages**. PRs with messy commit history are difficult to review and won't be merged. Use `rebase -i upstream/master` to curate your commit history and/or to bring in latest changes from master (but avoid rebasing in the middle of a code review).
 
 * Keep your PR up to date with upstream/master (if there are merge conflicts, we can't really merge your change).
 

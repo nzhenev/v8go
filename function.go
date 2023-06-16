@@ -6,7 +6,6 @@ package v8go
 
 // #include "v8go.h"
 import "C"
-
 import (
 	"unsafe"
 )
@@ -20,7 +19,7 @@ type Function struct {
 func (fn *Function) Call(recv Valuer, args ...Valuer) (*Value, error) {
 	var argptr *C.ValuePtr
 	if len(args) > 0 {
-		cArgs := make([]C.ValuePtr, len(args))
+		var cArgs = make([]C.ValuePtr, len(args))
 		for i, arg := range args {
 			cArgs[i] = arg.value().ptr
 		}
@@ -34,7 +33,7 @@ func (fn *Function) Call(recv Valuer, args ...Valuer) (*Value, error) {
 func (fn *Function) NewInstance(args ...Valuer) (*Object, error) {
 	var argptr *C.ValuePtr
 	if len(args) > 0 {
-		cArgs := make([]C.ValuePtr, len(args))
+		var cArgs = make([]C.ValuePtr, len(args))
 		for i, arg := range args {
 			cArgs[i] = arg.value().ptr
 		}
@@ -45,7 +44,7 @@ func (fn *Function) NewInstance(args ...Valuer) (*Object, error) {
 }
 
 // Return the source map url for a function.
-func (fn *Function) SourceMapURL() *Value {
+func (fn *Function) SourceMapUrl() *Value {
 	ptr := C.FunctionSourceMapUrl(fn.ptr)
 	return &Value{ptr, fn.ctx}
 }

@@ -116,7 +116,7 @@ func TestGlobalObjectTemplate(t *testing.T) {
 			ctx := v8.NewContext(iso, tt.global())
 			val, err := ctx.RunScript(tt.source, "test.js")
 			if err != nil {
-				t.Fatalf("unexpected error running script: %v", err)
+				t.Fatalf("unexpected error runing script: %v", err)
 			}
 			tt.validate(t, val)
 			ctx.Close()

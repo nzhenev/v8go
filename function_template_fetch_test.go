@@ -12,7 +12,7 @@ package v8go_test
 
 import (
 	"fmt"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"strings"
 
@@ -32,7 +32,7 @@ func ExampleFunctionTemplate_fetch() {
 
 		go func() {
 			res, _ := http.Get(url)
-			body, _ := io.ReadAll(res.Body)
+			body, _ := ioutil.ReadAll(res.Body)
 			val, _ := v8.NewValue(iso, string(body))
 			resolver.Resolve(val)
 		}()
@@ -49,7 +49,7 @@ func ExampleFunctionTemplate_fetch() {
 	for prom.State() == v8.Pending {
 		continue
 	}
-	fmt.Printf("%s\n", strings.Split(prom.Result().String(), "\n")[7])
+	fmt.Printf("%s\n", strings.Split(prom.Result().String(), "\n")[0])
 	// Output:
 	// <!DOCTYPE html>
 }

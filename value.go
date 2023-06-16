@@ -7,7 +7,6 @@ package v8go
 // #include <stdlib.h>
 // #include "v8go.h"
 import "C"
-
 import (
 	"errors"
 	"fmt"
@@ -126,7 +125,7 @@ func NewValue(iso *Isolate, val interface{}) (*Value, error) {
 		bits := v.Bits()
 		count = len(bits)
 
-		words := make([]C.uint64_t, count)
+		words := make([]C.uint64_t, count, count)
 		for idx, word := range bits {
 			words[idx] = C.uint64_t(word)
 		}
@@ -146,12 +145,12 @@ func (v *Value) Format(s fmt.State, verb rune) {
 	switch verb {
 	case 'v':
 		if s.Flag('+') {
-			io.WriteString(s, v.DetailString()) // nolint:errcheck
+			io.WriteString(s, v.DetailString())
 			return
 		}
 		fallthrough
 	case 's':
-		io.WriteString(s, v.String()) // nolint:errcheck
+		io.WriteString(s, v.String())
 	case 'q':
 		fmt.Fprintf(s, "%q", v.String())
 	}
@@ -243,7 +242,7 @@ func (v *Value) Object() *Object {
 func (v *Value) String() string {
 	s := C.ValueToString(v.ptr)
 	defer C.free(unsafe.Pointer(s.data))
-	return C.GoStringN(s.data, s.length)
+	return C.GoStringN(s.data, C.int(s.length))
 }
 
 // Uint32 perform the equivalent of `Number(value)` in JS and convert the result to an
@@ -581,4 +580,21 @@ func (v *Value) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 	return []byte(jsonStr), nil
+}
+
+func (v *Value) SharedArrayBufferGetContents() ([]byte, func(), error) {
+	if !v.IsSharedArrayBuffer() {
+		return nil, nil, errors.New("v8go: value is not a SharedArrayBuffer")
+	}
+
+	backingStore := C.SharedArrayBufferGetBackingStore(v.ptr)
+	release := func() {
+		C.BackingStoreRelease(backingStore)
+	}
+
+	byte_ptr := (*byte)(unsafe.Pointer(C.BackingStoreData(backingStore)))
+	byte_size := C.BackingStoreByteLength(backingStore)
+	byte_slice := unsafe.Slice(byte_ptr, byte_size)
+
+	return byte_slice, release, nil
 }

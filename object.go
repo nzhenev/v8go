@@ -7,7 +7,6 @@ package v8go
 // #include <stdlib.h>
 // #include "v8go.h"
 import "C"
-
 import (
 	"fmt"
 	"math/big"
@@ -84,6 +83,7 @@ func (o *Object) SetIdx(idx uint32, val interface{}) error {
 // Panics if the index isn't in the range set by (*ObjectTemplate).SetInternalFieldCount.
 func (o *Object) SetInternalField(idx uint32, val interface{}) error {
 	value, err := coerceValue(o.ctx.iso, val)
+
 	if err != nil {
 		return err
 	}
@@ -121,6 +121,7 @@ func (o *Object) GetInternalField(idx uint32) *Value {
 		panic(fmt.Errorf("index out of range [%v] with length %v", idx, o.InternalFieldCount()))
 	}
 	return &Value{rtn, o.ctx}
+
 }
 
 // GetIdx tries to get a Value at a give Object index.

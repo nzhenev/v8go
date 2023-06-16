@@ -1,5 +1,14 @@
 # Execute JavaScript from Go
 
+<a href="https://github.com/rogchap/v8go/releases"><img src="https://img.shields.io/github/v/release/rogchap/v8go" alt="Github release"></a>
+[![Go Report Card](https://goreportcard.com/badge/github.com/nzhenev/v8go)](https://goreportcard.com/report/github.com/nzhenev/v8go)
+[![Go Reference](https://pkg.go.dev/badge/github.com/nzhenev/v8go.svg)](https://pkg.go.dev/github.com/nzhenev/v8go)
+[![CI](https://github.com/rogchap/v8go/workflows/CI/badge.svg)](https://github.com/rogchap/v8go/actions?query=workflow%3ACI)
+![V8 Build](https://github.com/rogchap/v8go/workflows/V8%20Build/badge.svg)
+[![codecov](https://codecov.io/gh/rogchap/v8go/branch/master/graph/badge.svg?token=VHZwzGm3dV)](https://codecov.io/gh/rogchap/v8go)
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B22862%2Fgit%40github.com%3Arogchap%2Fv8go.git.svg?type=shield)](https://app.fossa.com/projects/custom%2B22862%2Fgit%40github.com%3Arogchap%2Fv8go.git?ref=badge_shield)
+[![#v8go Slack Channel](https://img.shields.io/badge/slack-%23v8go-4A154B?logo=slack)](https://gophers.slack.com/channels/v8go)
+
 <img src="gopher.jpg" width="200px" alt="V8 Gopher based on original artwork from the amazing Renee French" />
 
 ## Usage
@@ -174,7 +183,7 @@ func printTree(nest string, node *v8.CPUProfileNode) {
 
 ## Documentation
 
-Go Reference & more examples: https://pkg.go.dev/ionos-cloud/v8go
+Go Reference & more examples: https://pkg.go.dev/github.com/nzhenev/v8go
 
 ### Support
 
@@ -183,7 +192,7 @@ please join the [**#v8go**](https://gophers.slack.com/channels/v8go) channel on 
 
 ### Windows
 
-There used to be Windows binary support. For further information see, [PR #234](https://github.com/nzhenev/v8go/pull/234).
+There used to be Windows binary support. For further information see, [PR #234](https://github.com/rogchap/v8go/pull/234).
 
 The v8go library would welcome contributions from anyone able to get an external windows
 build of the V8 library linking with v8go, using the version of V8 checked out in the
@@ -212,7 +221,7 @@ This project also aims to keep up-to-date with the latest (stable) release of V8
 
 ## License
 
-[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B22862%2Fgit%40github.com%3Aionos-cloud%2Fv8go.git.svg?type=large)](https://app.fossa.com/projects/custom%2B22862%2Fgit%40github.com%3Aionos-cloud%2Fv8go.git?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B22862%2Fgit%40github.com%3Arogchap%2Fv8go.git.svg?type=large)](https://app.fossa.com/projects/custom%2B22862%2Fgit%40github.com%3Arogchap%2Fv8go.git?ref=badge_large)
 
 ## Development
 
@@ -227,15 +236,15 @@ This project also aims to keep up-to-date with the latest (stable) release of V8
 
 ### Upgrading the V8 binaries
 
-We have the [upgradev8](https://github.com/nzhenev/v8go/.github/workflow/v8upgrade.yml) workflow.
+We have the [upgradev8](https://github.com/rogchap/v8go/.github/workflow/v8upgrade.yml) workflow.
 The workflow is triggered every day or manually.
 
-If the current [v8_version](https://github.com/nzhenev/v8go/deps/v8_version) is different from the latest stable version, the workflow takes care of fetching the latest stable v8 files and copying them into `deps/include`. The last step of the workflow opens a new PR with the branch name `v8_upgrade/<v8-version>` with all the changes.
+If the current [v8_version](https://github.com/rogchap/v8go/deps/v8_version) is different from the latest stable version, the workflow takes care of fetching the latest stable v8 files and copying them into `deps/include`. The last step of the workflow opens a new PR with the branch name `v8_upgrade/<v8-version>` with all the changes.
 
 The next steps are:
 
 1) The build is not yet triggered automatically. To trigger it manually, go to the [V8
-Build](https://github.com/nzhenev/v8go/actions?query=workflow%3A%22V8+Build%22) Github Action, Select "Run workflow",
+Build](https://github.com/rogchap/v8go/actions?query=workflow%3A%22V8+Build%22) Github Action, Select "Run workflow",
 and select your pushed branch eg. `v8_upgrade/<v8-version>`.
 1) Once built, this should open 3 PRs against your branch to add the `libv8.a` for Linux (for x86_64) and macOS for x86_64 and arm64; merge
 these PRs into your branch. You are now ready to raise the PR against `master` with the latest version of V8.
