@@ -212,6 +212,7 @@ extern RtnValue NewValueBigIntFromWords(IsolatePtr iso_ptr,
                                         int sign_bit,
                                         int word_count,
                                         const uint64_t* words);
+extern RtnValue NewStringFromBytes(IsolatePtr iso, const uint8_t* v, int len);
 void ValueRelease(ValuePtr ptr);
 extern RtnString ValueToString(ValuePtr ptr);
 const uint32_t* ValueToArrayIndex(ValuePtr ptr);

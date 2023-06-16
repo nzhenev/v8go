@@ -42,7 +42,7 @@ func ExampleFunctionTemplate_fetch() {
 
 	ctx := v8.NewContext(iso, global)
 	defer ctx.Close()
-	val, _ := ctx.RunScript("fetch('https://github.com/nzhenev/v8go')", "")
+	val, _ := ctx.RunScript("fetch('https://example.com/')", "")
 	prom, _ := val.AsPromise()
 
 	// wait for the promise to resolve
@@ -51,5 +51,5 @@ func ExampleFunctionTemplate_fetch() {
 	}
 	fmt.Printf("%s\n", strings.Split(prom.Result().String(), "\n")[0])
 	// Output:
-	// <!DOCTYPE html>
+	// <!doctype html>
 }

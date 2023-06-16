@@ -62,6 +62,15 @@ func Null(iso *Isolate) *Value {
 //	uint64 -> V8::BigInt
 //	bool -> V8::Boolean
 //	*big.Int -> V8::BigInt
+func NewStringFromBytes(iso *Isolate, bytes []byte) (*Value, error) {
+	if iso == nil {
+		panic(errors.New("v8go: failed to create new Value: Isolate cannot be <nil>"))
+	}
+	cUint := (*C.uchar)(unsafe.Pointer(&bytes[0]))
+	rtnVal := C.NewStringFromBytes(iso.ptr, cUint, C.int(len(bytes)))
+	return valueResult(nil, rtnVal)
+}
+
 func NewValue(iso *Isolate, val interface{}) (*Value, error) {
 	if iso == nil {
 		return nil, errors.New("v8go: failed to create new Value: Isolate cannot be <nil>")
