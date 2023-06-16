@@ -3,6 +3,6 @@
 package include
 
 import (
-	_ "github.com/nzhenev/v8go/v8go/deps/include/cppgc"
-	_ "github.com/nzhenev/v8go/v8go/deps/include/libplatform"
+	_ "github.com/nzhenev/v8go/deps/include/cppgc"
+	_ "github.com/nzhenev/v8go/deps/include/libplatform"
 )

@@ -1,4 +1,4 @@
-module github.com/nzhenev/v8go/v8go
+module github.com/nzhenev/v8go
 
 go 1.20
 

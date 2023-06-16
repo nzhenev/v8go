@@ -11,7 +11,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/nzhenev/v8go/v8go"
+	"github.com/nzhenev/v8go"
 )
 
 func TestMain(m *testing.M) {

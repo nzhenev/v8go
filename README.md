@@ -5,7 +5,7 @@
 ## Usage
 
 ```go
-import v8 "github.com/nzhenev/v8go/v8go"
+import v8 "github.com/nzhenev/v8go"
 ```
 
 ### Running a script
@@ -183,7 +183,7 @@ please join the [**#v8go**](https://gophers.slack.com/channels/v8go) channel on 
 
 ### Windows
 
-There used to be Windows binary support. For further information see, [PR #234](https://github.com/nzhenev/v8go/v8go/pull/234).
+There used to be Windows binary support. For further information see, [PR #234](https://github.com/nzhenev/v8go/pull/234).
 
 The v8go library would welcome contributions from anyone able to get an external windows
 build of the V8 library linking with v8go, using the version of V8 checked out in the
@@ -227,15 +227,15 @@ This project also aims to keep up-to-date with the latest (stable) release of V8
 
 ### Upgrading the V8 binaries
 
-We have the [upgradev8](https://github.com/nzhenev/v8go/v8go/.github/workflow/v8upgrade.yml) workflow.
+We have the [upgradev8](https://github.com/nzhenev/v8go/.github/workflow/v8upgrade.yml) workflow.
 The workflow is triggered every day or manually.
 
-If the current [v8_version](https://github.com/nzhenev/v8go/v8go/deps/v8_version) is different from the latest stable version, the workflow takes care of fetching the latest stable v8 files and copying them into `deps/include`. The last step of the workflow opens a new PR with the branch name `v8_upgrade/<v8-version>` with all the changes.
+If the current [v8_version](https://github.com/nzhenev/v8go/deps/v8_version) is different from the latest stable version, the workflow takes care of fetching the latest stable v8 files and copying them into `deps/include`. The last step of the workflow opens a new PR with the branch name `v8_upgrade/<v8-version>` with all the changes.
 
 The next steps are:
 
 1) The build is not yet triggered automatically. To trigger it manually, go to the [V8
-Build](https://github.com/nzhenev/v8go/v8go/actions?query=workflow%3A%22V8+Build%22) Github Action, Select "Run workflow",
+Build](https://github.com/nzhenev/v8go/actions?query=workflow%3A%22V8+Build%22) Github Action, Select "Run workflow",
 and select your pushed branch eg. `v8_upgrade/<v8-version>`.
 1) Once built, this should open 3 PRs against your branch to add the `libv8.a` for Linux (for x86_64) and macOS for x86_64 and arm64; merge
 these PRs into your branch. You are now ready to raise the PR against `master` with the latest version of V8.

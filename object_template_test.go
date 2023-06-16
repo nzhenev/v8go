@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"testing"
 
-	v8 "github.com/nzhenev/v8go/v8go"
+	v8 "github.com/nzhenev/v8go"
 )
 
 func TestObjectTemplate(t *testing.T) {

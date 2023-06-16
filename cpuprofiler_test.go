@@ -7,7 +7,7 @@ package v8go_test
 import (
 	"testing"
 
-	v8 "github.com/nzhenev/v8go/v8go"
+	v8 "github.com/nzhenev/v8go"
 )
 
 func TestCPUProfiler_Dispose(t *testing.T) {

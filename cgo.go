@@ -19,9 +19,9 @@ import "C"
 // DO NOT REMOVE
 // nolint:revive
 import (
-	_ "github.com/nzhenev/v8go/v8go/deps/darwin_arm64"
-	_ "github.com/nzhenev/v8go/v8go/deps/darwin_x86_64"
-	_ "github.com/nzhenev/v8go/v8go/deps/include"
-	_ "github.com/nzhenev/v8go/v8go/deps/linux_arm64"
-	_ "github.com/nzhenev/v8go/v8go/deps/linux_x86_64"
+	_ "github.com/nzhenev/v8go/deps/darwin_arm64"
+	_ "github.com/nzhenev/v8go/deps/darwin_x86_64"
+	_ "github.com/nzhenev/v8go/deps/include"
+	_ "github.com/nzhenev/v8go/deps/linux_arm64"
+	_ "github.com/nzhenev/v8go/deps/linux_x86_64"
 )
